@@ -1,3 +1,4 @@
+"""Try Gammapy config with traitlets."""
 from astropy.coordinates import Angle
 import traitlets.config
 from traitlets import TraitType, Unicode, Int, Float, List

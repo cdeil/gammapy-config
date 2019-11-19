@@ -1,3 +1,4 @@
+"""Try Gammapy config with astropy.config."""
 from astropy.config import ConfigNamespace, ConfigItem
 
 class LoggingConfig(ConfigNamespace):
