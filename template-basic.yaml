@@ -5,7 +5,7 @@ general:
 observations:
     datastore: $GAMMAPY_DATA/hess-dl3-dr1
     filters:
-    -   filter_type: all
+    - filter_type: all
 datasets:
     dataset-type: not assigned
     stack-datasets: true
