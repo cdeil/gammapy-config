@@ -1,34 +1,49 @@
-general:  # usually not written, default is nice
+general:  # usually not written, defaults are nice
     logging:
         level: info
     outdir: .
 
-#data:
-#    datastore: $GAMMAPY_DATA/hess-dl3-dr1/
-#    # Users have a few options to specify which obs to use
-#    obs_ids: [42, 43]
-#    obs_file: obs.csv
-#    obs_filters:
-#      - cone: {frame: gal, lon: 42d, lat: 43d, rad: 3d}
-#      - cone2: gal circle 42d 43d 3d
-#      - time: {start: 2019-12, stop: 2020-03}
-#
-#maps:
-#    type: 3d
-#    stack: true
-#    offset-max: 2.5d
-#    geom:
-#      wcs:
-#        # TBD: decide config format for SkyCoord
-#        skydir: {frame: gal, lon: 83.633d, lat: 22.014d}
-#        # Custom format that is easy to parse with a regex
-#        skydir2: "gal 83.633d 22.014d"
-#        binsize: 0.1d
-#        fov: 7d, 5d
-#      axes:
-#        # TBD: decide config format for energy MapAxis
-#        energy: {min: 0.1, max: 10, unit: TeV, n: 30}
-#        # Custom format that is easy to parse with a regex
-#        energy2: "0.1 TeV - 10 TeV, 30 bins"
+data:
+    datastore: $GAMMAPY_DATA/hess-dl3-dr1/
+    # Users have a few options to specify which obs to use
+    obs_ids: [42, 43]
+    obs_file: obs.csv # OBS_ID written in a text file, anything you like
+    obs_filters:
+      # Multiple are allowed here
+      - cone: {frame: gal, lon: 42d, lat: 43d, rad: 3d}
+      - cone2: gal circle 42d 43d 3d
+      - time: {start: 2019-12, stop: 2020-03}
+      # Custom format that is easy to parse with a regex
+      - time: 2019-12 - 2020-03
+      # TODO: should we offer more options?
+      # Bruno: +1, Christoph: -1
+      - source: Crab 3d
+      - par: {name: ALT_PNT, min: 42d, max: 56d}
 
-# TODO: add some other stuff
+
+maps:
+    type: 3d
+    stack: true
+    offset-max: 2.5d
+    geom:
+      wcs:
+        # TODO: decide config format for SkyCoord
+        skydir: {frame: gal, lon: 83.633d, lat: 22.014d}
+        # Custom format that is easy to parse with a regex
+        skydir2: gal 83.633d 22.014d
+        binsize: 0.1d
+        fov: 7d 5d
+      axes:
+        # TODO: decide config format for energy MapAxis
+        energy: {min: 0.1, max: 10, unit: TeV, nbins: 30}
+        # Custom format that is easy to parse with a regex
+        energy2: 0.1 TeV - 10 TeV, 30 bins
+
+fit:
+    # TODO: decide config format for energy energy ranges
+    fit_range: {min: 1 TeV, max: 100 TeV}
+    # Custom format that is easy to parse with a regex
+    fit_range2: 0.1 TeV - 100 TeV
+
+flux_points:
+    energy: {min: 0.1, max: 10, unit: TeV, nbins: 30}
