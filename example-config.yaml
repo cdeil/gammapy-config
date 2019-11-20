@@ -1,0 +1,33 @@
+general:  # usually not written, default is nice
+    logging:
+        level: info
+    outdir: .
+
+data:
+    datastore: $GAMMAPY_DATA/hess-dl3-dr1/
+    # Users have a few options to specify which obs to use
+    obs_ids: [42, 43]
+    obs_file: obs.csv
+    obs_filters:
+      - cone: {frame: gal, lon: 42d, lat: 43d, rad: 3d}
+      - time: {start: 2019-12, stop: 2020-03}
+
+maps:
+    type: 3d
+    stack: true
+    offset-max: 2.5d
+    geom:
+      wcs:
+        # TBD: decide config format for SkyCoord
+        skydir: {frame: gal, lon: 83.633d, lat: 22.014d}
+        # Custom format that is easy to parse with a regex
+        skydir: "gal 83.633d 22.014d"
+        binsize: 0.1d
+        fov: 7d, 5d
+      axes:
+        # TBD: decide config format for energy MapAxis
+        energy: {min: 0.1, max: 10, unit: TeV, n: 30}
+        # Custom format that is easy to parse with a regex
+        energy: "0.1 TeV - 10 TeV, 30 bins"
+
+# TODO: add some other stuff
