@@ -1,41 +1,32 @@
 """Try Gammapy config with pydantic."""
 from astropy.coordinates import Angle
-import pydantic
-from traitlets import TraitType, Unicode, Int, Float, List
+from pydantic import BaseModel
 
-class AngleTrait(TraitType):
-    default_value = Angle("42 deg")
-    info_text = 'An angle'
+class AngleType(Angle):
+    @classmethod
+    def __get_validators__(cls):
+        yield cls.validate
 
-    def validate(self, obj, value):
-        angle = Angle(value)
-        return angle
+    @classmethod
+    def validate(cls, v):
+        return Angle(v)
 
-class LoggingConfig(GammapyConfig):
-    level = Unicode(help="Log level", default_value="info").tag(config=True)
-    filename = Unicode(help="Log filename").tag(config=True)
+class LoggingConfig(BaseModel):
+    level = "info"
+    filename: str = None
 
+class GeneralConfig(BaseModel):
+    log: LoggingConfig = LoggingConfig()
+    outdir = "."
 
-class ObservationConfig(GammapyConfig):
-    c1 = Int()
-    c2 = Float()
-    c3 = Unicode()
-    a = AngleTrait()
+class AnalysisConfig(BaseModel):
+    general: GeneralConfig
 
-    log = LoggingConfig()
+    c1: int = 42
+    c2: float = 99.9
+    c3: str = "spam"
+    a: AngleType = "99 deg"
 
-    def from_json(self):
-        return
-
-if __name__ == '__main__':
-    c = ObservationConfig()
-    print(c)
-    print(c.c1)
-    print(c.log)
-    print(c.log.level)
-    print(c.a)
-
-    c.c1 = 1234
-    # c.hombre = "enrique"
-    c.a = "99 deg"
-    print(c.a)
+    class Config:
+        validate_assignment = True
+        # arbitrary_types_allowed = True
