@@ -1,6 +1,6 @@
 general:  # usually not written, defaults are nice
-    logging:
-        level: info
+    log:
+        level: warning
     outdir: .
 
 data:
@@ -14,16 +14,19 @@ data:
       - cone2: gal circle 42d 43d 3d
       - time: {start: 2019-12, stop: 2020-03}
       # Custom format that is easy to parse with a regex
-      - time: 2019-12 - 2020-03
+      - time: 2019-12-01 - 2020-03-01
       # TODO: should we offer more options?
       # Bruno: +1, Christoph: -1
-      - source: Crab 3d
-      - par: {name: ALT_PNT, min: 42d, max: 56d}
+#      - source: Crab 3d
+#      - par: {name: ALT_PNT, min: 42d, max: 56d}
 
 
-maps:
+datasets:
     type: 3d
     stack: true
+    background:
+      method: fov
+      exclusion: exclusion.fits
     offset-max: 2.5d
     geom:
       wcs:
@@ -38,6 +41,8 @@ maps:
         energy: {min: 0.1, max: 10, unit: TeV, nbins: 30}
         # Custom format that is easy to parse with a regex
         energy2: 0.1 TeV - 10 TeV, 30 bins
+    region: gal circle 42d 43d 3d
+
 
 fit:
     # TODO: decide config format for energy energy ranges
