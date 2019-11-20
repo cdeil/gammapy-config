@@ -45,6 +45,7 @@ We considered the following options:
 - [pydantic](https://github.com/samuelcolvin/pydantic) - [config_pydantic.py](config_pydantic.py) 
 - [traitlets](https://traitlets.readthedocs.io/) - [config_traitlets.py](config_traitlets.py)
 - [astropy.config](http://docs.astropy.org/en/stable/config/index.html) - [config_astropy.py](config_astropy.py) 
+- [configurator](https://configurator.readthedocs.io) - [config_configurator.py](config_configurator.py)
 - [attrs](http://www.attrs.org/) - no prototype
 - [dataclasses-jsonschema](https://github.com/s-knibbs/dataclasses-jsonschema) - no prototype
 - [python-jsonchema-objects](https://github.com/cwacek/python-jsonschema-objects) - no prototype
@@ -52,7 +53,7 @@ We considered the following options:
 - [warlock](https://github.com/bcwaldon/warlock) - no prototype
 - [anyconfig](https://github.com/ssato/python-anyconfig) - no prototype
 - [python-box](https://github.com/cdgriffith/Box) - no prototype
-- [configurator](https://configurator.readthedocs.io) - no prototype
+- [lsst/pex_config](https://github.com/lsst/pex_config) - no prototype
 
 |              | Hierarchical | YAML/JSON |   Dot  |  Repr  | Update | Typed | Frozen | Messages |
 | :----------: | :----------: | :-------: | :----: | :----: | :----: | :---: | :----: | :------: |

@@ -1,0 +1,26 @@
+# Install:    conda env create -f environment.yml
+# Update:     conda env update -f environment.yml
+# Activate:   conda activate gammapy-config
+# Deactivate: conda deactivate
+
+name: gammapy-config
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python==3.7
+  - pip
+  - ipython
+  - jupyter
+  - jupyterlab
+  - pydantic
+  - traitlets
+  - astropy
+  - attrs
+  - marshmallow
+  - warlock
+  - anyconfig
+  - python-box
+  - pip:
+    - configurator
