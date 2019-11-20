@@ -63,7 +63,11 @@ We considered the following options:
 
 ## Syntax for configuration settings
 
-- [Example file](example-config.yaml)
+- [Proposed example file](example-config.yaml)
+- [Existing options](docs.yaml)
+- [Template basic](template-basic.yaml)
+- [Template 1D](template-1d.yaml)
+- [Template 3D](template-3d.yaml)
 
 ## Notes
 
